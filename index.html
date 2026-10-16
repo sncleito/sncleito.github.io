@@ -71,7 +71,7 @@
 
   .sim { margin: 0; }
   .sim canvas { display: block; width: 100%; aspect-ratio: 1 / 1; }
-  .sim figcaption { font-family: var(--sans); font-size: 0.82rem; line-height: 1.5; color: var(--muted); margin-top: 0.4rem; }
+  .sim figcaption { font-family: var(--sans); font-size: 0.82rem; line-height: 1.5; color: var(--muted); margin-top: 0.2rem; }
   .sim button {
     font: inherit; color: var(--link); background: none; border: 0; padding: 0; margin-top: 0.35rem;
     text-decoration: underline; text-underline-offset: 0.18em; cursor: pointer;
@@ -94,7 +94,9 @@
   .pub-links { font-family: var(--sans); font-size: 0.88rem; font-weight: 500; }
   .theme { margin-top: 2.25rem; }
   .theme h3 { margin-top: 0; }
-  .theme .pubs { margin-top: 0.9rem; padding-left: 1rem; border-left: 2px solid var(--rule); }
+  .theme .pubs { margin: 0.9rem 0 0; padding-left: 1rem; border-left: 2px solid var(--rule); }
+  .theme h4 { font-size: 1.02rem; font-weight: 600; font-style: italic; line-height: 1.3; margin: 1.6rem 0 0.4rem; }
+  .theme h4 + .pubs { margin-top: 0.5rem; }
   .pub-links { display: block; margin-top: 0.1rem; color: var(--muted); }
 
   /* Experience, education, awards */
@@ -123,7 +125,6 @@
   <nav class="nav" aria-label="Sections">
     <a href="#research">Research</a>
     <a href="#experience">Experience</a>
-    <a href="#more">Outside the lab</a>
     <a href="cv.pdf">CV</a>
   </nav>
 
@@ -137,8 +138,6 @@
       <ul class="links">
         <li><a href="mailto:santos.neves.cleiton@gmail.com">Email</a></li>
         <li><a href="cv.pdf">CV (PDF)</a></li>
-        <!-- TODO: replace YOUR_ID with your Google Scholar user id -->
-        <li><a href="https://scholar.google.com/citations?user=YOUR_ID">Google Scholar</a></li>
         <li><a href="https://github.com/sncleito">GitHub</a></li>
         <li><a href="https://www.linkedin.com/in/sncleito">LinkedIn</a></li>
         <li><a href="http://lattes.cnpq.br/4637438167486690">Lattes</a></li>
@@ -148,8 +147,7 @@
     <figure class="sim">
       <canvas id="sim" role="img" aria-label="Animated simulation: defenders on a circular perimeter follow planned sequences of interceptions as intruders arrive from outside."></canvas>
       <figcaption>
-        A toy version of the problem: defenders on the boundary (circles are fast, squares are slow) intercept intruders arriving from outside. Each dashed path is a defender's current plan, the sequence of intruders it will meet in order of arrival. Hollow intruders have no defender yet.
-        <br><button type="button" id="sim-toggle">Pause animation</button>
+        <button type="button" id="sim-toggle">Pause animation</button>
       </figcaption>
     </figure>
   </header>
@@ -161,24 +159,26 @@
 
       <div class="theme">
         <h3>Team formation and coalitions</h3>
-        <p>Some intruders have higher probability of evading a capture. I study when defenders should form coalitions and how to keep those coalitions flexible as new threats appear, using probabilistic capture models.</p>
+        <p>Some intruders are more likely to evade capture. I study when defenders should form coalitions and how to keep those coalitions flexible as new threats appear, using probabilistic capture models.</p>
         <ul class="pubs">
-          <li>
-            <span class="pub-title">Dynamic Coalition Formation for Probabilistic Perimeter Defense with Homogeneous Defenders</span>
-            <span class="pub-meta"><strong>C. N. Santos</strong> and D. G. Macharet. <em>Brazilian Conference on Robotics (CROS)</em>, 2026.</span>
-            <span class="pub-links"><a href="https://doi.org/10.1109/CROS69211.2026.11565814">DOI</a></span>
-          </li>
           <li>
             <span class="pub-title">Adaptive Team Formation for Collaborative Perimeter Defense</span>
             <span class="pub-meta">M.Sc. thesis, UFMG, 2025. 3rd place in the Thesis and Dissertation Contest of the <em>Brazilian Robotics Symposium (SBR 2025)</em>; finalist for the Master's Thesis Award at the <em>Brazilian Symposium on Operations Research (SBPO 2026)</em>.</span>
             <span class="pub-links"><a href="https://www.youtube.com/watch?v=72XSBuPtcz8">Video</a>&emsp;<a href="https://proceedings.science/sbpo-2026/autores/cleiton-neves-santos?lang=pt-br">SBPO abstract</a>&emsp;<a href="https://dcc.ufmg.br/alunos-do-verlab-dcc-sao-premiados-no-concurso-de-teses-e-dissertacoes-em-robotica/">Award news (in Portuguese)</a></span>
           </li>
         </ul>
-      </div>
 
-      <div class="theme">
-        <h3>Heterogeneous teams</h3>
-        <p>Real teams mix robots with different speeds and capabilities. I give an exact formulation of the allocation problem as an unsplittable flow, prove it is NP-complete and W[1]-hard, and propose a heuristic that stays within 0.3% of the optimum.</p>
+        <h4>Homogeneous teams</h4>
+        <ul class="pubs">
+          <li>
+            <span class="pub-title">Dynamic Coalition Formation for Probabilistic Perimeter Defense with Homogeneous Defenders</span>
+            <span class="pub-meta"><strong>C. N. Santos</strong> and D. G. Macharet. <em>Brazilian Conference on Robotics (CROS)</em>, 2026.</span>
+            <span class="pub-links"><a href="https://doi.org/10.1109/CROS69211.2026.11565814">DOI</a></span>
+          </li>
+        </ul>
+
+        <h4>Heterogeneous teams</h4>
+        <p>Teams mix robots with different speeds and capabilities. I give an exact formulation of the allocation problem as an unsplittable flow, prove it is NP-complete and W[1]-hard, and propose a heuristic that stays within 0.3% of the optimum.</p>
         <ul class="pubs">
           <li>
             <!-- Title and venue withheld while under review. Add them once accepted. -->
@@ -233,7 +233,7 @@
           <span class="dates">2025 – 2029 (expected)</span>
         </li>
         <li>
-          <div><strong>M.Sc. in Computer Science</strong><span class="org">UFMG advised by Prof. Douglas G. Macharet</span></div>
+          <div><strong>M.Sc. in Computer Science</strong><span class="org">UFMG, advised by Prof. Douglas G. Macharet</span></div>
           <span class="dates">2023 – 2025</span>
         </li>
         <li>
