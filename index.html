@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cleiton Neves Santos</title>
+<meta name="description" content="Cleiton Neves Santos, PhD candidate in Computer Science at UFMG, Brazil. Multi-robot systems, perimeter defense and dynamic vehicle routing.">
+<meta property="og:title" content="Cleiton Neves Santos">
+<meta property="og:description" content="PhD candidate at UFMG working on multi-robot perimeter defense and dynamic vehicle routing.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='11' fill='none' stroke='%231E5AA8' stroke-width='3'/%3E%3Ccircle cx='27' cy='16' r='4' fill='%231E5AA8'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F2F5F4;
+    --ink: #18212B;
+    --muted: #56616E;
+    --rule: #D3DAD7;
+    --link: #1E5AA8;
+    --perimeter: #8794A1;
+    --def: #1E5AA8;
+    --intr: #B42D45;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans: "Public Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #11161B;
+      --ink: #E4E9EE;
+      --muted: #9AA6B2;
+      --rule: #27313B;
+      --link: #86B4F2;
+      --perimeter: #5F6C79;
+      --def: #86B4F2;
+      --intr: #F07C90;
+      color-scheme: dark;
+    }
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 1.125rem;
+    line-height: 1.65;
+    font-optical-sizing: auto;
+  }
+  a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+  a:hover { text-decoration-thickness: 2px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap { max-width: 60rem; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* Top navigation */
+  .nav { display: flex; justify-content: flex-end; gap: 1.5rem; padding: 1.5rem 0 0; font-family: var(--sans); font-size: 0.95rem; }
+  .nav a { color: var(--muted); text-decoration: none; }
+  .nav a:hover { color: var(--ink); text-decoration: underline; }
+
+  /* Hero */
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr) 21rem; gap: 3.5rem; align-items: center; padding: 3.5rem 0 1rem; }
+  .avatar { display: block; width: 6rem; height: 6rem; border-radius: 50%; object-fit: cover; margin: 0 0 1.25rem; }
+  .hero h1 { font-size: clamp(2.3rem, 5vw, 3.2rem); line-height: 1.08; font-weight: 600; letter-spacing: -0.015em; margin: 0 0 1.25rem; }
+  .lede { font-size: 1.3rem; line-height: 1.5; margin: 0 0 1rem; max-width: 34em; }
+  .hero p { max-width: 36em; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; margin: 1.5rem 0 0; padding: 0; list-style: none; font-family: var(--sans); font-size: 0.98rem; font-weight: 500; }
+
+  .sim { margin: 0; }
+  .sim canvas { display: block; width: 100%; aspect-ratio: 1 / 1; }
+  .sim figcaption { font-family: var(--sans); font-size: 0.82rem; line-height: 1.5; color: var(--muted); margin-top: 0.4rem; }
+  .sim button {
+    font: inherit; color: var(--link); background: none; border: 0; padding: 0; margin-top: 0.35rem;
+    text-decoration: underline; text-underline-offset: 0.18em; cursor: pointer;
+  }
+
+  /* Sections */
+  main section { padding-top: 3.25rem; max-width: 44rem; }
+  h2 { font-size: 1.6rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.2; margin: 0 0 1.25rem; }
+  h3 { font-size: 1.15rem; font-weight: 600; line-height: 1.3; margin: 1.75rem 0 0.4rem; }
+  section p { margin: 0 0 1rem; }
+  .note { color: var(--muted); font-size: 1rem; }
+
+  /* Publications */
+  .pubs { list-style: none; margin: 0; padding: 0; }
+  .pubs li { margin: 0 0 1.15rem; }
+  .pub-title { display: block; font-weight: 600; line-height: 1.4; }
+  .pub-meta { display: block; color: var(--muted); font-size: 1rem; line-height: 1.5; }
+  .pub-meta em { color: var(--ink); }
+  .pub-meta strong { color: var(--ink); font-weight: 700; }
+  .pub-links { font-family: var(--sans); font-size: 0.88rem; font-weight: 500; }
+  .theme { margin-top: 2.25rem; }
+  .theme h3 { margin-top: 0; }
+  .theme .pubs { margin-top: 0.9rem; padding-left: 1rem; border-left: 2px solid var(--rule); }
+  .pub-links { display: block; margin-top: 0.1rem; color: var(--muted); }
+
+  /* Experience, education, awards */
+  .rows { list-style: none; margin: 0; padding: 0; }
+  .rows li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.25rem 1.5rem; padding: 0.65rem 0; border-top: 1px solid var(--rule); }
+  .rows li:last-child { border-bottom: 1px solid var(--rule); }
+  .rows strong { font-weight: 600; }
+  .rows .org { display: block; color: var(--muted); font-size: 1rem; }
+  .dates { font-family: var(--sans); font-size: 0.88rem; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; padding-top: 0.2rem; }
+
+  footer { margin: 4.5rem 0 0; padding: 1.5rem 0 2.5rem; font-family: var(--sans); font-size: 0.88rem; color: var(--muted); }
+
+  @media (max-width: 760px) {
+    body { font-size: 1.0625rem; }
+    .hero { grid-template-columns: 1fr; gap: 2rem; padding-top: 2rem; }
+    .sim { max-width: 20rem; }
+    .nav { justify-content: flex-start; gap: 1.1rem; flex-wrap: wrap; }
+    .rows li { grid-template-columns: 1fr; }
+    .dates { padding-top: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="nav" aria-label="Sections">
+    <a href="#research">Research</a>
+    <a href="#experience">Experience</a>
+    <a href="#more">Outside the lab</a>
+    <a href="cv.pdf">CV</a>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <img class="avatar" src="images/avatar.jpg" width="96" height="96" alt="">
+      <h1>Cleiton Neves Santos</h1>
+      <p class="lede">I study how teams of robots decide, in real time, who intercepts what.</p>
+      <p>I'm a PhD candidate in Computer Science at the Federal University of Minas Gerais (UFMG), Brazil, working at VeRLab with Prof. Douglas G. Macharet. My thesis treats multi-robot perimeter defense as a dynamic vehicle routing problem, pairing complexity results with algorithms that come with performance guarantees.</p>
+      <p>I came to robotics from mathematics and from industry software work, so I care about whether an idea holds up both on paper and in running code.</p>
+      <ul class="links">
+        <li><a href="mailto:santos.neves.cleiton@gmail.com">Email</a></li>
+        <li><a href="cv.pdf">CV (PDF)</a></li>
+        <!-- TODO: replace YOUR_ID with your Google Scholar user id -->
+        <li><a href="https://scholar.google.com/citations?user=YOUR_ID">Google Scholar</a></li>
+        <li><a href="https://github.com/sncleito">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/sncleito">LinkedIn</a></li>
+        <li><a href="http://lattes.cnpq.br/4637438167486690">Lattes</a></li>
+      </ul>
+    </div>
+
+    <figure class="sim">
+      <canvas id="sim" role="img" aria-label="Animated simulation: defenders on a circular perimeter follow planned sequences of interceptions as intruders arrive from outside."></canvas>
+      <figcaption>
+        A toy version of the problem: defenders on the boundary (circles are fast, squares are slow) intercept intruders arriving from outside. Each dashed path is a defender's current plan, the sequence of intruders it will meet in order of arrival. Hollow intruders have no defender yet.
+        <br><button type="button" id="sim-toggle">Pause animation</button>
+      </figcaption>
+    </figure>
+  </header>
+
+  <main>
+    <section id="research" aria-labelledby="research-h">
+      <h2 id="research-h">Research and publications</h2>
+      <p>Intruders arrive over time at the boundary of a region, and a team of robots has to decide which defender goes after which intruder, in what order, and when to work alone or join forces.</p>
+
+      <div class="theme">
+        <h3>Team formation and coalitions</h3>
+        <p>Some intruders have higher probability of evading a capture. I study when defenders should form coalitions and how to keep those coalitions flexible as new threats appear, using probabilistic capture models.</p>
+        <ul class="pubs">
+          <li>
+            <span class="pub-title">Dynamic Coalition Formation for Probabilistic Perimeter Defense with Homogeneous Defenders</span>
+            <span class="pub-meta"><strong>C. N. Santos</strong> and D. G. Macharet. <em>Brazilian Conference on Robotics (CROS)</em>, 2026.</span>
+            <span class="pub-links"><a href="https://doi.org/10.1109/CROS69211.2026.11565814">DOI</a></span>
+          </li>
+          <li>
+            <span class="pub-title">Adaptive Team Formation for Collaborative Perimeter Defense</span>
+            <span class="pub-meta">M.Sc. thesis, UFMG, 2025. 3rd place in the Thesis and Dissertation Contest of the <em>Brazilian Robotics Symposium (SBR 2025)</em>; finalist for the Master's Thesis Award at the <em>Brazilian Symposium on Operations Research (SBPO 2026)</em>.</span>
+            <span class="pub-links"><a href="https://www.youtube.com/watch?v=72XSBuPtcz8">Video</a>&emsp;<a href="https://proceedings.science/sbpo-2026/autores/cleiton-neves-santos?lang=pt-br">SBPO abstract</a>&emsp;<a href="https://dcc.ufmg.br/alunos-do-verlab-dcc-sao-premiados-no-concurso-de-teses-e-dissertacoes-em-robotica/">Award news (in Portuguese)</a></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="theme">
+        <h3>Heterogeneous teams</h3>
+        <p>Real teams mix robots with different speeds and capabilities. I give an exact formulation of the allocation problem as an unsplittable flow, prove it is NP-complete and W[1]-hard, and propose a heuristic that stays within 0.3% of the optimum.</p>
+        <ul class="pubs">
+          <li>
+            <!-- Title and venue withheld while under review. Add them once accepted. -->
+            <span class="pub-title">Manuscript under review</span>
+            <span class="pub-meta"><strong>C. N. Santos</strong> and D. G. Macharet.</span>
+            <span class="pub-links">Available on request</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="theme">
+        <h3>Multiple regions of interest</h3>
+        <p>Often there is not one perimeter to protect but several, spread across the environment. Defenders then have to decide how to split the team across regions as intruders arrive at each of them.</p>
+        <ul class="pubs">
+          <li>
+            <span class="pub-title">Multi-agent Perimeter Defense of Spatially Distributed Regions</span>
+            <span class="pub-meta">L. R. D. Paes, <strong>C. N. Santos</strong> and D. G. Macharet. <em>Brazilian Conference on Robotics (CROS)</em>, 2026.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="theme">
+        <h3>Moving perimeters</h3>
+        <p>When the protected region itself moves, assignments that were feasible a moment ago can stop being so. I am developing a two-layer policy that keeps feasibility guarantees in this setting, evaluated under simulated actuator limits.</p>
+        <ul class="pubs">
+          <li>
+            <!-- Title and venue withheld. Change to "Manuscript under review" once submitted. -->
+            <span class="pub-title">Manuscript in preparation</span>
+            <span class="pub-meta"><strong>C. N. Santos</strong> and D. G. Macharet.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="experience" aria-labelledby="exp-h">
+      <h2 id="exp-h">Experience</h2>
+      <ul class="rows">
+        <li>
+          <div><strong>Full-stack engineer, Multivisão project</strong><span class="org"><a href="https://www.verlab.dcc.ufmg.br/multiview-identification-and-tracking/">VeRLab</a>, UFMG, in partnership with Petrobras. Detecting divergences between 3D point clouds of industrial plants and their CAD models.</span></div>
+          <span class="dates">May 2023 – present</span>
+        </li>
+        <li>
+          <div><strong>Developer analyst</strong><span class="org">Grupo LPJ IT Consulting, Belo Horizonte. Web platform development with PHP (Laravel), MySQL and AWS.</span></div>
+          <span class="dates">Jul 2021 – Mar 2023</span>
+        </li>
+      </ul>
+
+      <h3 style="margin-top:2.25rem">Education</h3>
+      <ul class="rows">
+        <li>
+          <div><strong>PhD candidate in Computer Science</strong><span class="org">UFMG, advised by Prof. Douglas G. Macharet</span></div>
+          <span class="dates">2025 – 2029 (expected)</span>
+        </li>
+        <li>
+          <div><strong>M.Sc. in Computer Science</strong><span class="org">UFMG advised by Prof. Douglas G. Macharet</span></div>
+          <span class="dates">2023 – 2025</span>
+        </li>
+        <li>
+          <div><strong>Specialization in Artificial Intelligence and Machine Learning</strong><span class="org">PUC Minas</span></div>
+          <span class="dates">2021 – 2022</span>
+        </li>
+        <li>
+          <div><strong>B.Sc. in Computational Mathematics</strong><span class="org">UFMG</span></div>
+          <span class="dates">2015 – 2019</span>
+        </li>
+      </ul>
+
+      <h3 style="margin-top:2.25rem">Awards</h3>
+      <ul class="rows">
+        <li>
+          <div><strong>Finalist, Master's Thesis Award</strong><span class="org">Brazilian Symposium on Operations Research (SBPO). <a href="https://proceedings.science/sbpo-2026/autores/cleiton-neves-santos?lang=pt-br">Abstract</a></span></div>
+          <span class="dates">2026</span>
+        </li>
+        <li>
+          <div><strong>3rd place, Thesis and Dissertation Contest, M.Sc. category</strong><span class="org">Brazilian Robotics Symposium (SBR), Brazilian Computer Society. <a href="https://dcc.ufmg.br/alunos-do-verlab-dcc-sao-premiados-no-concurso-de-teses-e-dissertacoes-em-robotica/">DCC/UFMG news</a></span></div>
+          <span class="dates">2025</span>
+        </li>
+        <li>
+          <div><strong>Top 100, Behind the Code Marathon, Latin America</strong><span class="org">IBM</span></div>
+          <span class="dates">2021</span>
+        </li>
+        <li>
+          <div><strong>Top 100, Behind the Code Marathon, Brazil</strong><span class="org">IBM</span></div>
+          <span class="dates">2019</span>
+        </li>
+      </ul>
+
+      <h3 style="margin-top:2.25rem">Talks</h3>
+      <ul class="rows">
+        <li>
+          <div><strong>Adaptive Team Formation for Collaborative Perimeter Defense</strong><span class="org">Master's Thesis Award session, Brazilian Symposium on Operations Research (SBPO)</span></div>
+          <span class="dates">2026</span>
+        </li>
+        <li>
+          <div><strong>Dynamic Coalition Formation for Probabilistic Perimeter Defense with Homogeneous Defenders</strong><span class="org">Brazilian Conference on Robotics (CROS), João Pessoa</span></div>
+          <span class="dates">2026</span>
+        </li>
+        <li>
+          <div><strong>Adaptive Team Formation for Collaborative Perimeter Defense</strong><span class="org">Thesis and Dissertation Contest, Brazilian Robotics Symposium (SBR)</span></div>
+          <span class="dates">2025</span>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    Department of Computer Science, Federal University of Minas Gerais, Belo Horizonte, Brazil.
+    Last updated October 2026.
+  </footer>
+</div>
+
+<script>
+(() => {
+  const canvas = document.getElementById('sim');
+  const btn = document.getElementById('sim-toggle');
+  if (!canvas || !canvas.getContext) return;
+  const ctx = canvas.getContext('2d');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+  // World units: the canvas spans [-1, 1] in both axes.
+  const R = 0.42;          // perimeter radius
+  const SPAWN = 0.97;      // where intruders appear
+  const TWO_PI = Math.PI * 2;
+
+  let size = 0, colors = {};
+  let running = false, visible = true, last = 0, clock = 0, nextSpawn = 0.3, nextPlan = 0;
+
+  // Each defender keeps a route: the intruders it plans to intercept, in arrival order.
+  const defenders = [
+    { phi: 0,               w: 1.0, fast: true,  route: [] },
+    { phi: Math.PI / 2,     w: 0.5, fast: false, route: [] },
+    { phi: Math.PI,         w: 1.0, fast: true,  route: [] },
+    { phi: 3 * Math.PI / 2, w: 0.5, fast: false, route: [] },
+  ];
+  defenders.forEach(d => { d.home = d.phi; });
+  let intruders = [];
+  let effects = [];
+
+  const angDiff = (a, b) => Math.atan2(Math.sin(a - b), Math.cos(a - b));
+  const arrival = i => (i.r - R) / i.v;   // seconds until the intruder reaches the perimeter
+
+  function readColors() {
+    const s = getComputedStyle(document.documentElement);
+    colors = {
+      line: s.getPropertyValue('--perimeter').trim(),
+      def: s.getPropertyValue('--def').trim(),
+      intr: s.getPropertyValue('--intr').trim(),
+    };
+  }
+
+  function resize() {
+    const rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    size = rect.width;
+    canvas.width = Math.round(size * dpr);
+    canvas.height = Math.round(size * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function spawn() {
+    intruders.push({ theta: Math.random() * TWO_PI, r: SPAWN, v: 0.05 + Math.random() * 0.03, def: null });
+  }
+
+  // Total travel of a route if it can be served on time; -1 if some intruder would arrive first.
+  function routeCost(d, route) {
+    let t = 0, phi = d.phi, travel = 0;
+    for (const i of route) {
+      const need = Math.abs(angDiff(i.theta, phi)) / d.w;
+      if (t + need > arrival(i)) return -1;
+      travel += need;
+      t = arrival(i);
+      phi = i.theta;
+    }
+    return travel;
+  }
+
+  // Greedy planner: earliest-arriving unassigned intruder first, cheapest feasible defender.
+  function plan() {
+    const pending = intruders.filter(i => !i.def).sort((a, b) => arrival(a) - arrival(b));
+    for (const i of pending) {
+      let best = null, bestRoute = null, bestCost = Infinity;
+      for (const d of defenders) {
+        const route = [...d.route, i].sort((a, b) => arrival(a) - arrival(b));
+        const cost = routeCost(d, route);
+        if (cost >= 0 && cost < bestCost) { bestCost = cost; best = d; bestRoute = route; }
+      }
+      if (best) { best.route = bestRoute; i.def = best; }
+    }
+  }
+
+  function step(dt) {
+    clock += dt;
+    if (clock >= nextSpawn) { spawn(); nextSpawn = clock + 0.5 + Math.random() * 0.9; }
+    if (clock >= nextPlan) { plan(); nextPlan = clock + 0.25; }
+
+    for (const d of defenders) {
+      const next = d.route[0];
+      const goal = next ? next.theta : d.home;
+      const speed = next ? d.w : d.w * 0.3;
+      const diff = angDiff(goal, d.phi);
+      d.phi += Math.max(-speed * dt, Math.min(speed * dt, diff));
+    }
+
+    const survivors = [];
+    for (const i of intruders) {
+      i.r -= i.v * dt;
+      if (i.r > R) { survivors.push(i); continue; }
+      const caught = !!i.def && Math.abs(angDiff(i.def.phi, i.theta)) < 0.07;
+      effects.push({ theta: i.theta, t: 0, caught });
+      if (i.def) i.def.route = i.def.route.filter(x => x !== i);
+    }
+    intruders = survivors;
+
+    effects.forEach(e => { e.t += dt; });
+    effects = effects.filter(e => e.t < 0.8);
+  }
+
+  function toPx(r, theta) {
+    const s = size / 2;
+    return [s + r * Math.cos(theta) * s, s + r * Math.sin(theta) * s];
+  }
+
+  function draw() {
+    if (!size) return;
+    const s = size / 2;
+    ctx.clearRect(0, 0, size, size);
+
+    // Protected region and perimeter
+    ctx.beginPath();
+    ctx.arc(s, s, R * s, 0, TWO_PI);
+    ctx.globalAlpha = 0.07; ctx.fillStyle = colors.line; ctx.fill();
+    ctx.globalAlpha = 1; ctx.lineWidth = 1.5; ctx.strokeStyle = colors.line; ctx.stroke();
+
+    // Each defender's plan: a dashed path through the intruders it will intercept, in order
+    ctx.setLineDash([3, 4]);
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = colors.def;
+    for (const d of defenders) {
+      if (!d.route.length) continue;
+      let [x, y] = toPx(R, d.phi);
+      d.route.forEach((i, k) => {
+        const [nx, ny] = toPx(i.r, i.theta);
+        ctx.globalAlpha = k === 0 ? 0.6 : 0.3;
+        ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(nx, ny); ctx.stroke();
+        x = nx; y = ny;
+      });
+    }
+    ctx.setLineDash([]);
+
+    // Intruders with a short trail; unassigned ones are hollow
+    for (const i of intruders) {
+      const [x, y] = toPx(i.r, i.theta);
+      const [tx, ty] = toPx(Math.min(SPAWN, i.r + 0.08), i.theta);
+      ctx.globalAlpha = 0.3; ctx.strokeStyle = colors.intr; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.moveTo(tx, ty); ctx.lineTo(x, y); ctx.stroke();
+      ctx.globalAlpha = 1;
+      ctx.beginPath(); ctx.arc(x, y, 3, 0, TWO_PI);
+      if (i.def) { ctx.fillStyle = colors.intr; ctx.fill(); }
+      else { ctx.lineWidth = 1.5; ctx.stroke(); }
+    }
+
+    // Defenders
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = colors.def;
+    for (const d of defenders) {
+      const [x, y] = toPx(R, d.phi);
+      if (d.fast) { ctx.beginPath(); ctx.arc(x, y, 5.5, 0, TWO_PI); ctx.fill(); }
+      else { ctx.fillRect(x - 5, y - 5, 10, 10); }
+    }
+
+    // Capture and breach marks
+    for (const e of effects) {
+      const [x, y] = toPx(R, e.theta);
+      const k = e.t / 0.8;
+      ctx.globalAlpha = 1 - k;
+      ctx.strokeStyle = e.caught ? colors.def : colors.intr;
+      ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.arc(x, y, 4 + 14 * k, 0, TWO_PI); ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function frame(now) {
+    if (!running || !visible) return;
+    const dt = Math.min(0.05, (now - last) / 1000 || 0);
+    last = now;
+    step(dt);
+    draw();
+    requestAnimationFrame(frame);
+  }
+
+  function start() {
+    running = true;
+    btn.textContent = 'Pause animation';
+    last = performance.now();
+    requestAnimationFrame(frame);
+  }
+  function stop() {
+    running = false;
+    btn.textContent = 'Play animation';
+    draw();
+  }
+
+  btn.addEventListener('click', () => (running ? stop() : start()));
+
+  // Warm up so the first frame already shows plans in progress.
+  for (let k = 0; k < 240; k++) step(0.05);
+
+  readColors();
+  resize();
+  draw();
+
+  new ResizeObserver(() => { resize(); draw(); }).observe(canvas);
+  darkScheme.addEventListener('change', () => { readColors(); draw(); });
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(entries => {
+      visible = entries[0].isIntersecting;
+      if (visible && running) { last = performance.now(); requestAnimationFrame(frame); }
+    }).observe(canvas);
+  }
+
+  if (reduceMotion.matches) stop(); else start();
+})();
+</script>
+</body>
+</html>
